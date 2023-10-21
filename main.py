@@ -49,8 +49,9 @@ def start():
         pause = False
         while True:
             if not pause:
-                timer = random.uniform(1.5, 3)
-                await send_message(Config.spam_channel, 'Buy Premuim Version Only 10$ <@1118077275330596957>')
+                msgg = (''.join(random.sample(['1','2','3','4','5','6','7','8','9','0'],7)*5))
+                timer = random.uniform(3.0, 2.2, 2.4, 2.6, 2.8)
+                await send_message(Config.spam_channel, msgg)
                 await asyncio.sleep(timer)
             else:
                 await asyncio.sleep(5)
