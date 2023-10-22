@@ -50,7 +50,7 @@ def start():
         while True:
             if not pause:
                 msgg = (''.join(random.sample(['1','2','3','4','5','6','7','8','9','0'],7)*5))
-                timer = random.uniform(3.0, 2.2, 2.4, 2.6, 2.8)
+                timer = random.uniform(3.0, 2.3)
                 await send_message(Config.spam_channel, msgg)
                 await asyncio.sleep(timer)
             else:
@@ -60,7 +60,7 @@ def start():
     @bot.event
     async def on_message(message):
         try:
-            poketwo = 716390085896962058
+            poketwo = "716390085896962058"
 
             if message.channel.id == int(Config.spawn_channel):
                 if message.author.id == int(poketwo):
