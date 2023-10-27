@@ -105,7 +105,7 @@ def start():
                     print('Captcha detected; autocatcher paused. Press enter to restart, after solving captcha manually.')
                     await channel.send('<@716390085896962058> h')
 
-            if message.channel.id == int(Config.spawn_channel):
+            if not message.author.bot and message.channel.id == int(Config.spawn_channel):
                 await bot.process_commands(message)
                     
         except Exception as e:
