@@ -50,7 +50,7 @@ def start():
         while True:
             if not pause:
                 msgg = (''.join(random.sample(['1','2','3','4','5','6','7','8','9','0'],7)*5))
-                timer = random.uniform(3.0, 2.3)
+                timer = random.uniform(1.0, 1.5)
                 await send_message(Config.spam_channel, msgg)
                 await asyncio.sleep(timer)
             else:
