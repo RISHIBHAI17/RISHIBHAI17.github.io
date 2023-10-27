@@ -47,15 +47,22 @@ def start():
         print(f'[{timestamp}] [INFO] - {Fore.LIGHTGREEN_EX}Bot Is Ready...{Style.RESET_ALL}')
         print(f'[{timestamp}] [INFO] - Start Spamming...')
         pause = False
+        coma = False
         while True:
             if not pause:
                 msgg = (''.join(random.sample(['1','2','3','4','5','6','7','8','9','0'],7)*5))
-                timer = random.uniform(1.0, 1.5)
+                timer = random.uniform(3.0, 2.3)
                 await send_message(Config.spam_channel, msgg)
                 await asyncio.sleep(timer)
-            else:
+            if coma:
+                await asyncio.sleep(5)
+                print("off")
+            elif coma == None:
                 await asyncio.sleep(5)
                 pause = False
+                
+                
+                
 
     @bot.event
     async def on_message(message):
@@ -91,11 +98,25 @@ def start():
                         print(f'[{timestamp}] [INFO] - {Fore.LIGHTGREEN_EX}{extracted_message}{Style.RESET_ALL}')
                 elif message.content.startswith('That is the wrong pokémon!'):
                     print(f'[{timestamp}] [INFO] - {Fore.RED}That is the wrong pokémon!{Style.RESET_ALL}')
+                    
+            if message.author.id == int(poketwo) and message.channel.id == int(Config.spawn_channel):
+                if 'human' in message.content:
+                    coma = True
+                    print('Captcha detected; autocatcher paused. Press enter to restart, after solving captcha manually.')
+                    await channel.send('<@716390085896962058> h')
 
+            if message.channel.id == int(Config.spawn_channel):
+                await bot.process_commands(message)
+                    
         except Exception as e:
             print(f"[{timestamp}] [ERROR] - {Fore.RED}Error in on_message: {Style.RESET_ALL}{e}")
-
-
+                
+                    
+    @bot.command()
+    async def say(ctx, *, args):
+        await ctx.send(args)
+        
+    
     with open('pokemon.json', 'r', encoding='utf-8') as f:
         words = json.load(f)
 
