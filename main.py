@@ -119,8 +119,8 @@ def start():
         await ctx.send(args)
 
     @bot.command()
-    async def done(ctx, *, args):
-        await ctx.send(args)
+    async def done(ctx, *, msg):
+        await ctx.send(msg)
         
     
     with open('pokemon.json', 'r', encoding='utf-8') as f:
