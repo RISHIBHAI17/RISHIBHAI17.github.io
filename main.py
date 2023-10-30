@@ -120,7 +120,12 @@ def start():
 
     @bot.command()
     async def done(ctx, *, msg):
-        await ctx.send(msg)
+        if coma == False:
+            await ctx.send("abe bsdk k Stop nhi j bot code m cheak kar le ek baar")
+
+        if coma == True: 
+            coma = False 
+            await ctx.send(msg)
         
     
     with open('pokemon.json', 'r', encoding='utf-8') as f:
