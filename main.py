@@ -54,10 +54,12 @@ def start():
                 timer = random.uniform(3.0, 2.3)
                 await send_message(Config.spam_channel, msgg)
                 await asyncio.sleep(timer)
-            if coma:
+            if coma == True:
                 await asyncio.sleep(5)
                 print("off")
-            elif coma == None:
+                await asyncio.slepp(2)
+                print("loading...")
+            if coma == False:
                 await asyncio.sleep(5)
                 pause = False
                 
@@ -114,6 +116,10 @@ def start():
                     
     @bot.command()
     async def say(ctx, *, args):
+        await ctx.send(args)
+
+    @bot.command()
+    async def done(ctx, *, args):
         await ctx.send(args)
         
     
